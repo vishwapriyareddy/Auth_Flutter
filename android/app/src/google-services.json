@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "842703030981",
+    "project_id": "auth-4010a",
+    "storage_bucket": "auth-4010a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842703030981:android:5959ce583bb460021c3eac",
+        "android_client_info": {
+          "package_name": "com.example.roi_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842703030981-6shadouto20a9icn895d8lvunp6hu2rj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.roi_app",
+            "certificate_hash": "c9857708f8b540b7b09209a8d307a0569338ce67"
+          }
+        },
+        {
+          "client_id": "842703030981-rb1s6ar7dqf9eetsqkk23iumbncaaik5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA17hFpmYHLalb5vx4-LiX6DLLwxJiECX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842703030981-rb1s6ar7dqf9eetsqkk23iumbncaaik5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
