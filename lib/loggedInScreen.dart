@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'package:roi_app/loginContent.dart';
+import 'package:roi_app/service/maps.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 var userName = '';
- 
 
 class LoggedInScreen extends StatefulWidget {
   LoggedInScreen({Key? key}) : super(key: key);
@@ -21,11 +22,15 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
   @override
   void initState() {
     getUser();
+    //CircularProgressIndicator();
+    Provider.of<GenerateMaps>(context, listen: false).getCurrentLocation();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+//    var locationModel = Provider.of<LocationModel>(context);
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.all(8.0),
@@ -34,7 +39,6 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-         
           Text(
             'Welcome ' + userName,
             style: TextStyle(fontSize: 30),
@@ -47,14 +51,20 @@ class _LoggedInScreenState extends State<LoggedInScreen> {
               ' uid:' +
               (_auth.currentUser.uid != null ? _auth.currentUser.uid : '') +
               ')'),
-              ElevatedButton(onPressed: ()=> debugPrint("the value userName")
-              , child: Text("Debug")),
+
           ElevatedButton(
               onPressed: () => {
                     //sign out
                     signOut()
                   },
-              child: Text('Sign out'))
+              child: Text('Sign out')),
+
+          Container(
+            constraints: BoxConstraints(
+              maxWidth: 250.0
+            ),
+            child: Center(child: finalAddress != null ?Text(finalAddress):CircularProgressIndicator()),
+          )
         ],
       ),
     ));

@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:roi_app/service/maps.dart';
 
 import 'onboardingpage.dart';
 
@@ -7,17 +9,19 @@ void main() {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Splash Screen',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
+    return MultiProvider(
+      providers:[ ChangeNotifierProvider.value(value: GenerateMaps()),],
+      child: MaterialApp(
+        title: 'Splash Screen',
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+        ),
+        home: MyHomePage(),
+        debugShowCheckedModeBanner: false,
       ),
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -33,8 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     Timer(
         Duration(seconds: 5),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => OnBoardingPage())));
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => OnBoardingPage())));
   }
 
   @override
